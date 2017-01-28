@@ -30,6 +30,17 @@ public class Contacts {
     }
 
 
+    public Contacts(){}
+
+    public Contacts(String name){
+        this.Name= name;
+    }
+    public Contacts(String name, String phone){
+        this.Name= name;
+        this.Phone= phone;
+    }
+
+
 
 
     public void print() {
