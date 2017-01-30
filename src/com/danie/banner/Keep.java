@@ -1,13 +1,18 @@
 package com.danie.banner;
 
 
+import java.io.IOException;
+
 public class Keep {
 
 
 
 
 
-    public static void Run() {
+
+    public static void Run() throws IOException {
+
+
         Contacts contacto = new Contacts();
 
 
@@ -35,6 +40,9 @@ public class Keep {
                 case LOOK:
 
                     Contain.printLook();
+                    break;
+                case HELP:
+                    Contain.printHelp();
                     break;
                 case CLS:
                     Contain.cls();

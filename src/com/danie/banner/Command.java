@@ -6,6 +6,7 @@ public enum Command {
     DELETE,
     QUIT,
     LOOK,
+    HELP,
     CLS,
     UNKNOWN
 }

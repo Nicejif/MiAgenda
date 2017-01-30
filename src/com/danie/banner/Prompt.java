@@ -11,7 +11,7 @@ public class Prompt {
 
     // this text show ever you need.
     public static void print(){
-        System.out.print("Hola digame que necesita : " + "\n\n");
+        System.out.print("Hola digame que necesita : " );
     }
 
     public static String scan(){

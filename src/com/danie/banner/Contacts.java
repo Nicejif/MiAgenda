@@ -15,15 +15,14 @@ public class Contacts {
 
     private String Name;
     private String Phone;
-    public LinkedList<Contacts> contact = new LinkedList<>();
-    private LinkedList<Contacts> contacts;
+    private LinkedList<Contacts> contact = new LinkedList<>();
 
 
     public String getName() {
         return Name;
     }
 
-    public  void setName(String name) {
+    public void setName(String name) {
         Name = name;
     }
 
@@ -50,7 +49,7 @@ public class Contacts {
 
 
     public LinkedList<Contacts> getContacts() {
-        return contacts;
+        return contact;
     }
 }
 

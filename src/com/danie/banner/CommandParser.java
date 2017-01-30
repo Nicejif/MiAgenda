@@ -6,6 +6,8 @@ public class CommandParser {
 
         if (text.equalsIgnoreCase("add") || text.equalsIgnoreCase("a")){
             return Command.ADD;
+        }if (text.equalsIgnoreCase("help") || text.equalsIgnoreCase("h")){
+            return Command.HELP;
         }
         if (text.equalsIgnoreCase("delete") || text.equalsIgnoreCase("d")){
             return Command.DELETE;
