@@ -23,17 +23,18 @@ public class Keep {
             switch (com){
 
                 case ADD:
-                    Contain.add(contacto.getName(),contacto.getPhone());
 
+                    Contain.add();
                     break;
                 case DELETE:
-
+                    Contain.delete();
                     break;
                 case QUIT:
                     end=true;
                     break;
                 case LOOK:
 
+                    Contain.printLook();
                     break;
                 case CLS:
                     Contain.cls();

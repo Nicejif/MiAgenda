@@ -6,6 +6,8 @@ package com.danie.banner;
 
 import java.util.LinkedList;
 
+
+
 public class Contacts {
 
     // make him private.
@@ -13,7 +15,8 @@ public class Contacts {
 
     private String Name;
     private String Phone;
-    private LinkedList<Contacts> contact;
+    public LinkedList<Contacts> contact = new LinkedList<>();
+    private LinkedList<Contacts> contacts;
 
 
     public String getName() {
@@ -46,7 +49,9 @@ public class Contacts {
     }
 
 
-
+    public LinkedList<Contacts> getContacts() {
+        return contacts;
+    }
 }
 
 
