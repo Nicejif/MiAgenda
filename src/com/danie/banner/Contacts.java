@@ -4,20 +4,26 @@ package com.danie.banner;
 // Our contact list have two values : Name and Phone.
 
 
+import java.util.LinkedList;
+
+
+
 public class Contacts {
 
     // make him private.
 
 
-        private String Name;
-        private String Phone;
+    private String Name;
+    private String Phone;
+    public LinkedList<Contacts> contact = new LinkedList<>();
+    private LinkedList<Contacts> contacts;
 
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String name) {
+    public  void setName(String name) {
         Name = name;
     }
 
@@ -30,21 +36,21 @@ public class Contacts {
     }
 
 
-    public Contacts(){}
-
-    public Contacts(String name){
-        this.Name= name;
-    }
-    public Contacts(String name, String phone){
-        this.Name= name;
-        this.Phone= phone;
+    public Contacts() {
     }
 
+    public Contacts(String name) {
+        this.Name = name;
+    }
+
+    public Contacts(String name, String phone) {
+        this.Name = name;
+        this.Phone = phone;
+    }
 
 
-
-    public void print() {
-        System.out.println("Name:  "+ getName()+ "\n" + "Phone:  " + getPhone());
+    public LinkedList<Contacts> getContacts() {
+        return contacts;
     }
 }
 
