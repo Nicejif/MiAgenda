@@ -1,14 +1,35 @@
 package com.danie.banner;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Contain {
 
-    private static List<Contacts> list = new ArrayList<>();
+    private static List<Contacts> list = new LinkedList<>();
+    private static List<String> lista= new LinkedList<>();
 
 
+
+    public static void keepdata() {
+
+
+        Data dato = new Data();
+
+
+
+            for (Contacts contacto : list) {
+                String n = Contain.list.indexOf(contacto) + ") Name= " + contacto.getName() + "\t-\t" + " Phone= " + contacto.getPhone() + "\n";
+
+                lista.add(n);
+            }
+            try {
+                dato.createFile("base", lista);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+    }
 
     public static void printHelp() {
 
@@ -23,25 +44,25 @@ public class Contain {
 
 
     public static void printLook(){
+
         if (list == null){
             System.out.println("\n Su agenda se encuentra vacia \n");
-        }else {
+        }else{
 
             for (Contacts contacts : list) {
-                System.out.println("(" + Contain.list.indexOf(contacts) + ")\t Name= " + contacts.getName() + "\n\t" + " Phone= " + contacts.getPhone());
+                System.out.println("(" + Contain.list.indexOf(contacts) + ") Name= " + contacts.getName() + "\t-\t" + " Phone= " + contacts.getPhone() + "\n");
 
             }
         }
 
-        Data dato = new Data();
-        System.out.println(dato.readFile("base"));
+
     }
 
 
 
-    public static void  add() throws IOException {
+    public static void  add() {
 
-        Data dato = new Data();
+
 
             //Leo lo que escribo en pantalla como nombre
             System.out.print(" Name = ");
@@ -57,7 +78,8 @@ public class Contain {
 
         list.add(contacto);
 
-        dato.createFile("base", list);
+        keepdata();
+
 
 
 
@@ -70,13 +92,14 @@ public class Contain {
 
     public static void delete() {
         System.out.print(" Position to delete: ");
-        String number= Prompt.scan();
+        int number= Integer.parseInt(Prompt.scan());
 
         for (Contacts contact:list){
-            Contain.list.equals(number);
+            int nu=Contain.list.indexOf(contact);
 
+            nu= number;
             System.out.print("Ha eliminado el contacto" +  contact.toString());
-            list.remove(contact);
+            list.remove(number);
         }
 
 
