@@ -1,4 +1,4 @@
-# MiAgenda
+# MiAgenda Version 0.1
 
 ## That is a basic contact list.
 
