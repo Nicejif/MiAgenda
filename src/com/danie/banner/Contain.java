@@ -47,9 +47,12 @@ public class Contain {
 
     public static void printLook(){
 
+
+        System.out.println("<---" + list.size() + "---->" + "Contactos");
         if (list.size() == 0){
             System.out.println("\n Su agenda se encuentra vacia \n");
         }else{
+
 
             for (Contacts contacts : list) {
                 System.out.println("(" + Contain.list.indexOf(contacts) + ") Name= " + contacts.getName() + "\t-\t" + " Phone= " + contacts.getPhone() + "\n");
@@ -101,16 +104,17 @@ public class Contain {
 
         Scanner keyboard = new Scanner(System.in);
         System.out.print(" Position to delete: ");
-        int number = keyboard.nextInt();
+
 
        try {
+           int number = keyboard.nextInt();
            if ((number < 0) || (number >= list.size()) ) {
                System.out.println("Error!");
            } else {
                list.remove(number);
            }
        }catch (InputMismatchException e){
-           e.printStackTrace();
+           System.out.println("Noor");
        }
 
         for (Contacts contacts:list
