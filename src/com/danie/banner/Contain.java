@@ -1,30 +1,36 @@
 package com.danie.banner;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Contain {
 
-    private static List<Contacts> list = new LinkedList<>();
-    private static List<String> lista= new LinkedList<>();
+    private static LinkedList<Contacts> list = new LinkedList<>();
+    private static Data dato= new Data();
 
 
 
     public static void keepdata() {
 
 
-        Data dato = new Data();
+
+        list.clear();
+        LinkedList<String> lista= (LinkedList<String>) dato.readFile(Keys.BASE);
 
 
+            for (String a : lista) {
+                int line= a.indexOf("-");
+                String name= a.substring(0, line);
+                String phone= a.substring(line+1 ,a.length()-1);
 
-            for (Contacts contacto : list) {
-                String n = Contain.list.indexOf(contacto) + ") Name= " + contacto.getName() + "\t-\t" + " Phone= " + contacto.getPhone() + "\n";
+                Contacts nuev= new Contacts(name,phone);
+                list.add(nuev);
 
-                lista.add(n);
             }
             try {
-                dato.createFile("base", lista);
+                dato.createFile(Keys.BASE, lista);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -32,10 +38,6 @@ public class Contain {
     }
 
     public static void printHelp() {
-
-
-
-
 
         System.out.println("Si escribes:\n\n" + "l --> Muestra la lista de Contactos de la Agenda\n" + "a --> Añade un Contacto a la Agenda\n"
                 + "d --> Borra un Contacto de la Agenda\n" + "q --> Salir del programa\n"
@@ -45,7 +47,7 @@ public class Contain {
 
     public static void printLook(){
 
-        if (list == null){
+        if (list.size() == 0){
             System.out.println("\n Su agenda se encuentra vacia \n");
         }else{
 
@@ -62,7 +64,7 @@ public class Contain {
 
     public static void  add() {
 
-
+        LinkedList<String> lista= new LinkedList<>();
 
             //Leo lo que escribo en pantalla como nombre
             System.out.print(" Name = ");
@@ -73,15 +75,18 @@ public class Contain {
            //Creo un nuevo contacto y lo voy añadiendo a mi lista
         Contacts contacto = new Contacts(n, p);
 
-        System.out.println(" New contact added ." + "\n\n");
-
-
         list.add(contacto);
 
-        keepdata();
+        for (Contacts co:list) {
 
-
-
+            lista.add(co.getName() + " - " + co.getPhone());
+        }
+        try {
+            dato.createFile(Keys.BASE, lista);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(" New contact added ." + "\n\n");
 
     }
     public static void cls(){
@@ -91,19 +96,37 @@ public class Contain {
     }
 
     public static void delete() {
+        LinkedList<String> lista= new LinkedList<>();
+
+
+        Scanner keyboard = new Scanner(System.in);
         System.out.print(" Position to delete: ");
-        int number= Integer.parseInt(Prompt.scan());
+        int number = keyboard.nextInt();
 
-        for (Contacts contact:list){
-            int nu=Contain.list.indexOf(contact);
+       try {
+           if ((number < 0) || (number >= list.size()) ) {
+               System.out.println("Error!");
+           } else {
+               list.remove(number);
+           }
+       }catch (InputMismatchException e){
+           e.printStackTrace();
+       }
 
-            nu= number;
-            System.out.print("Ha eliminado el contacto" +  contact.toString());
-            list.remove(number);
+        for (Contacts contacts:list
+             ) {
+            lista.add(contacts.getName()+ "- " + contacts.getPhone());
+
+
         }
 
-
+        try {
+            dato.createFile(Keys.BASE,lista);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
 }

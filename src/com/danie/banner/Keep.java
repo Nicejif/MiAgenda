@@ -1,6 +1,7 @@
 package com.danie.banner;
 
 
+import java.io.File;
 import java.io.IOException;
 
 public class Keep {
@@ -11,9 +12,20 @@ public class Keep {
 
 
     public static void Run() throws IOException {
+        try {
+            File file = new File(Keys.BASE);
 
+            if (file.createNewFile()){
+                System.out.println("Creating " + Keys.BASE);
+            }else{
+                Contain.keepdata();
+                System.out.println("Loaded data from " + Keys.BASE);
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating new file");
+            System.out.println(e);
+        }
 
-        Contacts contacto = new Contacts();
 
 
         boolean end= false;
